@@ -1,0 +1,26 @@
+---
+interface Props {
+  site: any;
+}
+const { site } = Astro.props as Props;
+---
+<section class="hero section">
+  <div class="hero-aurora" aria-hidden="true"></div>
+  <div class="container">
+    <span class="eyebrow">{site.siteName}</span>
+    <h1 class="title">
+      <span class="gradient-text">{site.tagline}</span>
+    </h1>
+    <p class="sub">{site.subtitle}</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
+      <a href="#cta" class="btn primary" aria-label="{site.cta.primary}">{site.cta.primary}</a>
+      <a href={site.links.whitepaper} class="btn ghost" aria-label="ホワイトペーパー">{site.cta.secondary}</a>
+    </div>
+    <div style="margin-top:16px; display:flex; gap:12px; flex-wrap: wrap; align-items:center;">
+      <span class="pill">カーボンネイティブ</span>
+      <span class="pill">AI検証</span>
+      <span class="pill">ZK Ready</span>
+    </div>
+  </div>
+</section>
+

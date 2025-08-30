@@ -1,0 +1,28 @@
+---
+interface Item { label: string; percent: number; color: string }
+interface Props { data: Item[] }
+const { data } = Astro.props as Props;
+
+let acc = 0;
+const segments = data.map((d) => {
+  const start = acc;
+  acc += d.percent;
+  const end = acc;
+  return `${d.color} ${start}% ${end}%`;
+}).join(", ");
+---
+<div class="grid grid-2" style="align-items:center">
+  <div>
+    <div class="donut" style={`background: conic-gradient(${segments});`}></div>
+  </div>
+  <div class="legend">
+    {data.map((d) => (
+      <div class="item">
+        <span class="swatch" style={`background:${d.color}`}></span>
+        <div><strong>{d.label}</strong> — {d.percent}%</div>
+      </div>
+    ))}
+  </div>
+  
+</div>
+

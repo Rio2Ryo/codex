@@ -1,0 +1,29 @@
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --brand: #22c55e;
+  --brand-2: #34d399;
+  --brand-hover: #16a34a;
+  --ring: rgba(34, 197, 94, 0.35);
+
+  --radius: 14px;
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 18px;
+  --space-4: 24px;
+  --space-6: 36px;
+  --space-8: 48px;
+  --max-w: 980px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #475569;
+  }
+}
+

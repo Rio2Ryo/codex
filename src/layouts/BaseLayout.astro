@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+const { title = 'GaiaNova — Carbon-Native Chain', description = '自然とAIが共進化するクリプトのIEO', url = 'https://example.com' } = Astro.props;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0d231c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+    
+    <script type="application/ld+json" is:inline>{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GaiaNova",
+      "url": "https://example.com",
+      "sameAs": [
+        "https://twitter.com/",
+        "https://discord.gg/"
+      ]
+    }</script>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container nav">
+        <a class="brand" href="#top"><span class="dot"></span> GaiaNova</a>
+        <nav style="display:flex; gap:16px; align-items:center">
+          <a href="#about">About</a>
+          <a href="#sustainability">Sustainability</a>
+          <a href="#token">Tokenomics</a>
+          <a href="#ieo">IEO</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn primary" href="#cta" aria-label="IEOに参加">参加する</a>
+        </nav>
+      </div>
+    </header>
+    <main id="top">
+      <slot />
+    </main>
+    <footer>
+      <div class="container">
+        <div style="display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap: wrap;">
+          <div>© {new Date().getFullYear()} GaiaNova — All rights reserved.</div>
+          <div style="display:flex; gap:14px; align-items:center;">
+            <a class="pill" href="/whitepaper.pdf">Whitepaper</a>
+            <a class="pill" href="#">GitHub</a>
+            <a class="pill" href="#">X/Twitter</a>
+            <a class="pill" href="#">Discord</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

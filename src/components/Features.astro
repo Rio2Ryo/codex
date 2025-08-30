@@ -1,0 +1,15 @@
+---
+export interface FeatureItem { title: string; description: string; icon?: string }
+interface Props { items: FeatureItem[] }
+const { items } = Astro.props as Props;
+---
+<section class="features" id="features">
+  {items.map((f) => (
+    <article class="card">
+      <h3>{f.icon ? `${f.icon} ${f.title}` : f.title}</h3>
+      <p>{f.description}</p>
+    </article>
+  ))}
+  <slot />
+</section>
+

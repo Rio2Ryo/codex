@@ -1,0 +1,42 @@
+import { site } from "../config/site";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.name, description = site.description } = Astro.props as Props;
+---
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={site.themeColor} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <div class="logo-badge" aria-hidden="true"></div>
+          <span>{site.name}</span>
+        </div>
+        <nav>
+          <a href="#features">特徴</a>
+          <a href="#get-started">始める</a>
+          <a href="#contact">連絡</a>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="footer">© {new Date().getFullYear()} {site.name}</footer>
+    </div>
+  </body>
+</html>

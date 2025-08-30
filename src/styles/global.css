@@ -1,0 +1,85 @@
+/* Design: Futuristic x Nature (aurora + neon greens) */
+:root{
+  --bg: #07140f;
+  --bg-2: #0b1f18;
+  --text: #e8fff1;
+  --muted: #a9cbbb;
+  --accent: #39ff88;
+  --accent-2: #00e0ff;
+  --warn: #ffb84d;
+  --danger: #ff6b6b;
+  --card: #0f2820cc;
+  --outline: #1f4b3d;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background: radial-gradient(1200px 800px at 10% -10%, #0e2d24 0%, transparent 60%),
+              radial-gradient(1200px 800px at 110% 10%, #0b2239 0%, transparent 60%),
+              linear-gradient(180deg, var(--bg) 0%, #06110d 30%, #05100d 100%);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height:1.6;
+}
+
+/* Utilities */
+.container{ max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.grid{ display:grid; gap:24px }
+.grid-2{ grid-template-columns: 1fr; }
+.grid-3{ grid-template-columns: 1fr; }
+@media (min-width: 900px){
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+  .grid-3{ grid-template-columns: repeat(3, 1fr); }
+}
+
+.section{ padding: 80px 0; position:relative }
+.section .eyebrow{ color: var(--accent-2); letter-spacing: .1em; font-size: .8rem; text-transform: uppercase; }
+.section h2{ margin: 8px 0 16px; font-size: clamp(28px, 5vw, 42px); line-height: 1.15; }
+.muted{ color: var(--muted) }
+
+.card{ background: var(--card); border: 1px solid var(--outline); border-radius: 16px; padding: 20px; backdrop-filter: blur(6px); }
+
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 12px 18px; border-radius: 999px; text-decoration:none; font-weight:600; border:1px solid transparent; transition: all .2s ease; }
+.btn.primary{ background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%); color:#042315; box-shadow: 0 10px 30px #00ffab33; }
+.btn.primary:hover{ transform: translateY(-1px); box-shadow: 0 14px 40px #00ffab44; }
+.btn.ghost{ color: var(--text); border-color: var(--outline);} 
+.btn.ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+/* Header */
+header.site{ position: sticky; top:0; z-index:50; background: linear-gradient(180deg, #06130f 0%, #06130fdd 60%, transparent 100%); border-bottom: 1px solid #0d2a21; backdrop-filter: blur(8px); }
+header .nav{ display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px }
+header .nav a{ color: var(--muted); text-decoration:none; font-weight:600; }
+header .nav a:hover{ color: var(--text); }
+header .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px }
+.brand .dot{ width:10px; height:10px; border-radius:999px; background: radial-gradient(circle at 30% 30%, #fff, var(--accent) 40%, #0f0 80%); box-shadow:0 0 16px #39ff8899 }
+
+/* Hero */
+.hero{ position: relative; padding: 96px 0 56px; overflow: hidden; }
+.hero .title{ font-size: clamp(36px, 8vw, 64px); line-height:1.05; margin: 8px 0 16px; }
+.gradient-text{ background: linear-gradient(90deg, #afffda 0%, #64ffd0 50%, #00e0ff 100%); -webkit-background-clip: text; background-clip:text; color: transparent; }
+.sub{ color: var(--muted); font-size: clamp(16px, 2.4vw, 20px); }
+.hero-aurora{ position:absolute; inset:-20% -10% auto -10%; height: 80%; filter: blur(50px); pointer-events:none; opacity:.65; background: conic-gradient(from 180deg at 50% 50%, #00ffaa 0%, #00e0ff 30%, #5bffd0 55%, #00ffaa 100%); mix-blend-mode: screen; animation: drift 18s ease-in-out infinite alternate; }
+@keyframes drift{ from{ transform: translateY(-8%) rotate(0deg) scale(1.05) } to{ transform: translateY(6%) rotate(10deg) scale(1.1) } }
+
+/* Tokens donut */
+.donut{ width: 240px; height: 240px; border-radius: 50%; background: #0f2a22; position: relative; }
+.donut::after{ content:""; position:absolute; inset:18%; background: var(--bg-2); border-radius:50%; box-shadow: inset 0 0 0 1px var(--outline); }
+.legend{ display:flex; flex-direction:column; gap:10px }
+.legend .item{ display:flex; align-items:center; gap:10px }
+.legend .swatch{ width:14px; height:14px; border-radius:4px; border: 1px solid #00000033 }
+
+/* Footer */
+footer{ padding: 48px 0; color: var(--muted); border-top:1px solid var(--outline); background:#06130f }
+
+/* details/summary FAQ */
+details{ background: #0d241d; border: 1px solid var(--outline); padding: 14px 16px; border-radius: 12px }
+details+details{ margin-top: 12px }
+summary{ cursor:pointer; font-weight:600 }
+
+/* small helpers */
+.pill{ font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--outline); color: var(--muted) }
+.kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#0a221b; border:1px solid #113a2f; padding:2px 6px; border-radius:6px }
+

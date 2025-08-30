@@ -1,0 +1,74 @@
+{
+  "siteName": "GaiaNova",
+  "tagline": "自然とAIが共進化する、カーボンネイティブ・チェーン",
+  "subtitle": "あなたのトランザクションが、次の森を育てる。",
+  "description": "GaiaNovaは、トランザクション手数料の一部をリアルワールドの自然回復プロジェクトへ自動配分する、カーボンネイティブなL1/L2アーキテクチャです。AIに最適化された推論/検証パイプラインを持ち、グリーンな計算を世界標準に。",
+  "links": {
+    "whitepaper": "/whitepaper.pdf",
+    "docs": "#",
+    "twitter": "#",
+    "discord": "#",
+    "github": "#"
+  },
+  "cta": {
+    "primary": "IEOに参加する",
+    "secondary": "ホワイトペーパー"
+  },
+  "ieo": {
+    "exchange": "ExampleX",
+    "start": "2025-11-30T00:00:00Z",
+    "priceUSD": 0.035,
+    "hardCapUSD": 15000000,
+    "allocation": "150,000,000 GAIA",
+    "howTo": [
+      "取引所でKYCを完了",
+      "GAIA/USDTのIEOページにアクセス",
+      "割当を確定して参加"
+    ]
+  },
+  "token": {
+    "symbol": "GAIA",
+    "network": "GaiaNet",
+    "decimals": 18,
+    "totalSupply": "10,000,000,000",
+    "contract": "",
+    "utilities": [
+      "ステーキングで自然回復プールに貢献",
+      "AI検証レイヤーの手数料",
+      "ガバナンス(自然配分ポリシー)"
+    ]
+  },
+  "tokenomics": [
+    { "label": "コミュニティ", "percent": 35, "color": "#39ff88" },
+    { "label": "エコシステム/グラント", "percent": 20, "color": "#00e0ff" },
+    { "label": "IEO", "percent": 15, "color": "#86ffd6" },
+    { "label": "チーム", "percent": 15, "color": "#afffda" },
+    { "label": "リザーブ", "percent": 10, "color": "#3ef1b4" },
+    { "label": "アドバイザー", "percent": 5, "color": "#4dfed0" }
+  ],
+  "sustainability": [
+    "手数料の最大30%を自然回復プールに自動配分",
+    "オンチェーンでカーボン・クレジットをトークン化",
+    "軽量なZK証明と緑電優先ノードで省エネ"
+  ],
+  "roadmap": [
+    { "title": "Mainnet Phase 1", "period": "Q4 2025", "items": ["IEO/上場", "ステーキングv1", "自然回復プール稼働"] },
+    { "title": "AI Verify Layer", "period": "Q1 2026", "items": ["AI推論検証", "ZKロールアップ統合", "カーボン会計ダッシュボード"] },
+    { "title": "Gaia Grants", "period": "Q2 2026", "items": ["エコシステム・グラント", "開発者ハッカソン", "L2パートナー"] }
+  ],
+  "faq": [
+    { "q": "IEO参加に必要なものは?", "a": "対応取引所のKYCとUSDT残高が必要です。詳細は取引所のIEOページをご確認ください。" },
+    { "q": "GAIAのユーティリティは?", "a": "ステーキング報酬、AI検証レイヤーの手数料、ガバナンス(自然配分ポリシー)などに利用されます。" },
+    { "q": "自然にどのように貢献しますか?", "a": "手数料の一部がオンチェーンの自然回復プールに入り、認定プロジェクトへ透明に配分されます。" },
+    { "q": "投資リスクはありますか?", "a": "価格変動や規制変更リスクがあります。本LPは投資助言を目的としません。" }
+  ],
+  "team": [
+    { "name": "Aki", "role": "Protocol Lead" },
+    { "name": "Rin", "role": "AI/Zero-Knowledge" },
+    { "name": "Kai", "role": "Ecosystem" }
+  ],
+  "legal": {
+    "disclaimer": "本サイトは情報提供を目的としており、いかなる投資勧誘・助言を目的とするものではありません。暗号資産への投資には元本割れ等のリスクが伴います。必ずご自身で情報収集・判断の上ご参加ください。"
+  }
+}
+
