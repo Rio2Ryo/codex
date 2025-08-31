@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import site from "../data/site.json";
-import Hero from "../components/Hero.astro";
+import HeroPro from "../components/HeroPro.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import Applications from "../components/Applications.astro";
 import Problems from "../components/Problems.astro";
@@ -9,11 +9,18 @@ import Strengths from "../components/Strengths.astro";
 import EcosystemFlow from "../components/EcosystemFlow.astro";
 import TokenomicsChart from "../components/TokenomicsChart.astro";
 import TokenDetails from "../components/TokenDetails.astro";
+import Marquee from "../components/Marquee.astro";
 
 const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null;
 ---
 <BaseLayout title={`${site.siteName} — ${site.tagline}`} description={site.description}>
-  <Hero site={site} />
+  <HeroPro site={site} />
+
+  <section class="section">
+    <div class="container">
+      <Marquee items={site.partners} />
+    </div>
+  </section>
 
   <section id="overview" class="section">
     <div class="container grid grid-2">

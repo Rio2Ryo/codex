@@ -10,6 +10,13 @@
     "discord": "#",
     "github": "#"
   },
+  "partners": ["ASEAN Gov.", "Research Univ.", "Green Energy", "BioTech Lab", "Climate DAO"],
+  "stats": [
+    { "label": "展開国数", "value": 8, "suffix": "+" },
+    { "label": "拠点数", "value": 70, "suffix": "+" },
+    { "label": "総供給", "value": 10000000000, "suffix": "" },
+    { "label": "IEO割当", "value": 10, "suffix": "%" }
+  ],
   "intro": {
     "headline": "既存事業の実績 × 24/365稼働の藻類培養",
     "copy": "2007年からの藻類研究で培った均質化生産システムをベースに、世界8カ国・70拠点での実証を完了。太陽光と蓄電で自社エネルギー運用、CO₂の安定吸収を実現。IEOで調達した資金で生産拠点を拡大し、吸収量をオンチェーンで可視化します。"

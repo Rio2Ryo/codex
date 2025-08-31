@@ -1,0 +1,42 @@
+---
+interface Props { site: any }
+const { site } = Astro.props as Props;
+---
+<section class="hero section">
+  <div class="hero-aurora" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="container">
+    <span class="eyebrow reveal">{site.siteName}</span>
+    <h1 class="title reveal"><span class="gradient-text">{site.tagline}</span></h1>
+    <p class="sub reveal">{site.subtitle}</p>
+    <div class="reveal" style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
+      <a href="#cta" class="btn primary" aria-label="{site.cta.primary}">{site.cta.primary}</a>
+      <a href={site.links.whitepaper} class="btn ghost">{site.cta.secondary}</a>
+    </div>
+    {site.stats && (
+      <div class="stats" style="margin-top:24px">
+        {site.stats.map((s) => (
+          <div class="stat reveal">
+            <div class="num" data-target={s.value}>{s.prefix || ''}<span class="count">0</span>{s.suffix || ''}</div>
+            <div class="muted">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+  <script is:inline>
+    const els = document.querySelectorAll('.stat .count');
+    const io = new IntersectionObserver((es)=>{
+      for (const e of es){
+        if(!e.isIntersecting) continue;
+        const num = e.target;
+        const target = parseFloat(num.parentElement.dataset.target||'0');
+        let cur = 0; const steps = 28; const inc = target/steps;
+        const tick = ()=>{ cur = Math.min(target, cur+inc); num.textContent = (Math.round(cur*10)/10).toLocaleString(); if(cur<target) requestAnimationFrame(tick); };
+        tick(); io.unobserve(num);
+      }
+    },{threshold:.4});
+    els.forEach(el=>io.observe(el));
+  </script>
+</section>
+
