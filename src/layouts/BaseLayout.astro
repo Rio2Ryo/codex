@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
-const { title = 'GaiaNova — Carbon-Native Chain', description = '自然とAIが共進化するクリプトのIEO', url = 'https://example.com' } = Astro.props;
+import site from "../data/site.json";
+const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロックチェーンでCO₂吸収を可視化・価値化', url = 'https://example.com' } = Astro.props;
 ---
 <!doctype html>
 <html lang="ja">
@@ -22,7 +23,7 @@ const { title = 'GaiaNova — Carbon-Native Chain', description = '自然とAI�
     <script type="application/ld+json" is:inline>{
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "GaiaNova",
+      "name": "" + site.siteName,
       "url": "https://example.com",
       "sameAs": [
         "https://twitter.com/",
@@ -33,7 +34,7 @@ const { title = 'GaiaNova — Carbon-Native Chain', description = '自然とAI�
   <body>
     <header class="site">
       <div class="container nav">
-        <a class="brand" href="#top"><span class="dot"></span> GaiaNova</a>
+        <a class="brand" href="#top"><span class="dot"></span> {site.siteName}</a>
         <nav style="display:flex; gap:16px; align-items:center">
           <a href="#about">About</a>
           <a href="#sustainability">Sustainability</a>
@@ -51,7 +52,7 @@ const { title = 'GaiaNova — Carbon-Native Chain', description = '自然とAI�
     <footer>
       <div class="container">
         <div style="display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap: wrap;">
-          <div>© {new Date().getFullYear()} GaiaNova — All rights reserved.</div>
+          <div>© {new Date().getFullYear()} {site.siteName} — All rights reserved.</div>
           <div style="display:flex; gap:14px; align-items:center;">
             <a class="pill" href="/whitepaper.pdf">Whitepaper</a>
             <a class="pill" href="#">GitHub</a>

@@ -4,7 +4,7 @@ import site from "../data/site.json";
 import Hero from "../components/Hero.astro";
 import TokenomicsChart from "../components/TokenomicsChart.astro";
 
-const ieoStart = new Date(site.ieo.start).toISOString();
+const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null;
 ---
 <BaseLayout title={`${site.siteName} — ${site.tagline}`} description={site.description}>
   <Hero site={site} />
@@ -13,7 +13,7 @@ const ieoStart = new Date(site.ieo.start).toISOString();
     <div class="container grid grid-2">
       <div>
         <span class="eyebrow">About</span>
-        <h2>AIと自然が、同じ方向へ進むためのインフラ</h2>
+        <h2>藻類培養 × ブロックチェーンで環境価値を可視化</h2>
         <p class="muted">{site.description}</p>
         <ul>
           {site.token.utilities.map((u) => (<li>• {u}</li>))}
@@ -26,15 +26,21 @@ const ieoStart = new Date(site.ieo.start).toISOString();
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
           <div><span class="eyebrow">IEO Countdown</span><h3 style="margin:6px 0 0">上場まで</h3></div>
-          <span class="pill">{site.ieo.exchange}</span>
+          <span class="pill">{site.ieo.exchange || 'TBA'}</span>
         </div>
-        <div id="countdown" data-date={ieoStart} style="display:flex; gap:12px; margin-top:12px;">
-          <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="d">-</div><div class="muted">日</div></div>
-          <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="h">-</div><div class="muted">時間</div></div>
-          <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="m">-</div><div class="muted">分</div></div>
-          <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="s">-</div><div class="muted">秒</div></div>
-        </div>
-        <div class="muted" style="margin-top:12px">開始日時: {new Date(site.ieo.start).toLocaleString('ja-JP', { timeZone: 'UTC' })} (UTC)</div>
+        {ieoStart ? (
+          <>
+            <div id="countdown" data-date={ieoStart} style="display:flex; gap:12px; margin-top:12px;">
+              <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="d">-</div><div class="muted">日</div></div>
+              <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="h">-</div><div class="muted">時間</div></div>
+              <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="m">-</div><div class="muted">分</div></div>
+              <div class="card" style="text-align:center; flex:1"><div style="font-size:28px; font-weight:800" id="s">-</div><div class="muted">秒</div></div>
+            </div>
+            <div class="muted" style="margin-top:12px">開始日時: {new Date(site.ieo.start).toLocaleString('ja-JP', { timeZone: 'UTC' })} (UTC)</div>
+          </>
+        ) : (
+          <div class="muted" style="margin-top:12px">IEO準備中</div>
+        )}
       </div>
     </div>
     <script is:inline>
@@ -80,7 +86,7 @@ const ieoStart = new Date(site.ieo.start).toISOString();
   <section id="token" class="section">
     <div class="container">
       <span class="eyebrow">Tokenomics</span>
-      <h2>GAIA トークノミクス</h2>
+      <h2>{site.token.symbol} トークノミクス</h2>
       <div class="grid grid-2">
         <div class="card">
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
@@ -102,10 +108,10 @@ const ieoStart = new Date(site.ieo.start).toISOString();
       <div>
         <span class="eyebrow">IEO</span>
         <h2>上場情報</h2>
-        <p class="muted">取引所: <strong>{site.ieo.exchange}</strong><br/>
-          予定価格: <strong>${site.ieo.priceUSD.toFixed(3)}/GAIA</strong><br/>
-          ハードキャップ: <strong>${site.ieo.hardCapUSD.toLocaleString()}</strong><br/>
-          割当: <strong>{site.ieo.allocation}</strong>
+        <p class="muted">取引所: <strong>{site.ieo.exchange || 'TBA'}</strong><br/>
+          予定価格: <strong>{typeof site.ieo.priceUSD === 'number' ? `$${site.ieo.priceUSD.toFixed(3)}/${site.token.symbol}` : 'TBA'}</strong><br/>
+          ハードキャップ: <strong>{typeof site.ieo.hardCapUSD === 'number' ? `$${site.ieo.hardCapUSD.toLocaleString()}` : 'TBA'}</strong><br/>
+          割当: <strong>{site.ieo.allocation || 'TBA'}</strong>
         </p>
       </div>
       <div class="card">
