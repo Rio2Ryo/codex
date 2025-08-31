@@ -10,6 +10,11 @@ const { site } = Astro.props as Props;
     <span class="eyebrow reveal">{site.siteName}</span>
     <h1 class="title reveal"><span class="gradient-text">{site.tagline}</span></h1>
     <p class="sub reveal">{site.subtitle}</p>
+    <div class="reveal" style="display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 6px;">
+      <span class="pill">CO₂吸収の実証</span>
+      <span class="pill">オンチェーン透明性</span>
+      <span class="pill">{site.ieo?.exchange ? `IEO: ${site.ieo.exchange}` : 'IEO準備中'}</span>
+    </div>
     <div class="reveal" style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
       <a href="#cta" class="btn primary" aria-label="{site.cta.primary}">{site.cta.primary}</a>
       <a href={site.links.whitepaper} class="btn ghost">{site.cta.secondary}</a>
