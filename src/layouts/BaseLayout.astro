@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import site from "../data/site.json";
+import LinkPill from "../components/LinkPill.astro";
 const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロックチェーンでCO₂吸収を可視化・価値化', url = 'https://example.com' } = Astro.props;
 ---
 <!doctype html>
@@ -60,11 +61,12 @@ const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロック
       <div class="container">
         <div style="display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap: wrap;">
           <div>© {new Date().getFullYear()} {site.siteName} — All rights reserved.</div>
-          <div style="display:flex; gap:14px; align-items:center;">
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
             <a class="pill" href="/whitepaper.pdf">Whitepaper</a>
-            <a class="pill" href="#">GitHub</a>
-            <a class="pill" href="#">X/Twitter</a>
-            <a class="pill" href="#">Discord</a>
+            <LinkPill href={site.links.github} label="GitHub" />
+            <LinkPill href={site.links.twitter} label="X/Twitter" />
+            <LinkPill href={site.links.discord} label="Discord" />
+            <LinkPill href={site.links.docs} label="Docs" />
           </div>
         </div>
       </div>

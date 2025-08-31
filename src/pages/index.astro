@@ -157,10 +157,20 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
           割当: <strong>{site.ieo.allocation || 'TBA'}</strong>
         </p>
       </div>
-      <div class="card">
-        <ol>
-          {site.ieo.howTo.map((s) => (<li>{s}</li>))}
-        </ol>
+      <div class="panel">
+        <h3 style="margin:0 0 8px">参加手順</h3>
+        <div class="muted">以下の順にお進みください（取引所公開後にリンクを表示）。</div>
+        <div style="margin-top:10px">
+          <!-- simple list, styled component could be overkill here -->
+          <ol style="counter-reset: step; display:grid; gap:10px">
+            {site.ieo.howTo.map((s, idx) => (
+              <li style="list-style:none; display:flex; gap:12px; align-items:flex-start">
+                <span style="display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; font-weight:800;">{idx+1}</span>
+                <div style="flex:1">{s}</div>
+              </li>
+            ))}
+          </ol>
+        </div>
         <div style="margin-top:14px">
           <a class="btn primary" href="#cta">{site.cta.primary}</a>
         </div>
@@ -168,39 +178,6 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
     </div>
   </section>
 
-  <section id="roadmap" class="section">
-    <div class="container">
-      <span class="eyebrow">Roadmap</span>
-      <h2>進捗とこれから</h2>
-      <div class="grid grid-3">
-        {site.roadmap.map((r) => (
-          <div class="card">
-            <div class="pill">{r.period}</div>
-            <h3 style="margin:10px 0 8px">{r.title}</h3>
-            <ul>
-              {r.items.map((i) => (<li>• {i}</li>))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="team" class="section">
-    <div class="container">
-      <span class="eyebrow">Team</span>
-      <h2>コアメンバー</h2>
-      <div class="grid grid-3">
-        {site.team.map((m) => (
-          <div class="card" style="text-align:center">
-            <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 10px;background: radial-gradient(circle at 30% 30%, #fff, var(--accent) 40%, transparent 70%); box-shadow:0 0 0 1px var(--outline)"></div>
-            <strong>{m.name}</strong>
-            <div class="muted">{m.role}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section id="faq" class="section">
     <div class="container">

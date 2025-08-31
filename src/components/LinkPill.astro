@@ -1,0 +1,14 @@
+---
+interface Props { href?: string; label: string }
+const { href = '#', label } = Astro.props as Props;
+const isTodo = !href || href === '#';
+---
+<a href={isTodo ? undefined : href} class={`pill ${isTodo ? 'todo' : ''}`} aria-disabled={isTodo ? 'true' : 'false'}>
+  {isTodo ? `${label} を追加` : label}
+</a>
+
+<style is:global>
+.pill.todo{ opacity:.8; border-style:dashed; cursor:not-allowed }
+.pill.todo:hover{ color: var(--muted); border-color: var(--outline) }
+</style>
+

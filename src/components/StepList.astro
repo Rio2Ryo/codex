@@ -1,0 +1,13 @@
+---
+interface Props { steps: string[] }
+const { steps } = Astro.props as Props;
+---
+<ol style="counter-reset: step; display:grid; gap:10px" class="reveal">
+  {steps.map((s) => (
+    <li style="list-style:none; display:flex; gap:12px; align-items:flex-start">
+      <span style="counter-increment: step; display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; font-weight:800;">{String((globalThis as any).counter || '')}<script is:inline>this.parentElement?.querySelector('span').textContent = (this.parentElement?.querySelector('span')?.textContent || '')</script></span>
+      <div style="flex:1">{s}</div>
+    </li>
+  ))}
+</ol>
+
