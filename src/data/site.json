@@ -10,6 +10,7 @@
     "discord": "#",
     "github": "#"
   },
+  "heroImage": "/images/generated/hero.png",
   "partners": ["ASEAN Gov.", "Research Univ.", "Green Energy", "BioTech Lab", "Climate DAO"],
   "stats": [
     { "label": "展開国数", "value": 8, "suffix": "+" },
@@ -90,9 +91,9 @@
     "二次市場流通・透明会計で再投資"
   ],
   "photos": [
-    { "src": "/images/facility-plant.svg", "alt": "藻類培養施設のイメージ（均質化生産）" },
-    { "src": "/images/algae-leaf.svg", "alt": "マザーベジタブル（藻類）の象徴図" },
-    { "src": "/images/hero-nature.svg", "alt": "自然グラデーションの背景アート" }
+    { "src": "/images/generated/facility.png", "alt": "藻類培養施設のイメージ（均質化生産）" },
+    { "src": "/images/generated/leaf.png", "alt": "マザーベジタブル（藻類）の象徴図" },
+    { "src": "/images/generated/hero.png", "alt": "自然とテクノロジーが調和する景観" }
   ],
   "useOfProceeds": [
     { "label": "生産拠点構築・拡張", "percent": 60, "color": "#39ff88" },
