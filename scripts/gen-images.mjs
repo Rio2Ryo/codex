@@ -12,7 +12,7 @@ const prompts = JSON.parse(await fs.readFile(path.join(root, 'assets/prompts.jso
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-async function gen(name, prompt, size = '1024x576') {
+async function gen(name, prompt, size = '1536x1024') {
   console.log('Generating', name);
   const img = await client.images.generate({
     model: 'gpt-image-1',
@@ -27,9 +27,8 @@ async function gen(name, prompt, size = '1024x576') {
   console.log('Saved', file);
 }
 
-await gen('hero', prompts.hero);
+await gen('hero', prompts.hero, '1536x1024');
 await gen('leaf', prompts.leaf, '1024x1024');
-await gen('facility', prompts.facility);
+await gen('facility', prompts.facility, '1536x1024');
 
 console.log('Done.');
-
