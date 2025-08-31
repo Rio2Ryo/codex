@@ -10,14 +10,13 @@ const { categories } = Astro.props as Props;
       <div style="display:grid; gap:10px; margin-top:10px;">
         <div>
           <strong>課題</strong>
-          <ul>{c.issues.map(i => (<li>• {i}</li>))}</ul>
+          <ul>{c.issues.map(i => (<li>{i}</li>))}</ul>
         </div>
         <div>
           <strong>解決</strong>
-          <ul>{c.solutions.map(s => (<li>• {s}</li>))}</ul>
+          <ul>{c.solutions.map(s => (<li>{s}</li>))}</ul>
         </div>
       </div>
     </div>
   ))}
 </div>
-

@@ -16,14 +16,13 @@ const icons: Record<string,string> = {
         <h3 id={c.title} style="margin:0">{c.title}</h3>
       </div>
       <div class="muted" style="font-weight:700; letter-spacing:.2px; margin-bottom:6px">課題</div>
-      <ul style="margin:0 0 10px 0">
-        {c.issues.map(i => (<li style="font-size:15px">• {i}</li>))}
+      <ul style="margin:0 0 10px 0; padding-left: 18px; list-style: disc">
+        {c.issues.map(i => (<li style="font-size:15px">{i}</li>))}
       </ul>
       <div class="muted" style="font-weight:700; letter-spacing:.2px; margin-bottom:6px">EDENの解決</div>
-      <ul style="margin:0">
-        {c.solutions.map(s => (<li style="font-size:15px">• {s}</li>))}
+      <ul style="margin:0; padding-left: 18px; list-style: disc">
+        {c.solutions.map(s => (<li style="font-size:15px">{s}</li>))}
       </ul>
     </article>
   ))}
 </div>
-

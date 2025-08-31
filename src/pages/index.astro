@@ -34,7 +34,7 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
       <div>
         <SectionHeader eyebrow="Overview" title={site.intro.headline} sub={site.intro.copy} />
         <ul class="reveal">
-          {site.token.utilities.map((u) => (<li>• {u}</li>))}
+          {site.token.utilities.map((u) => (<li>{u}</li>))}
         </ul>
         <div class="reveal" style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
           <a class="btn ghost" href={site.links.docs}>Docs</a>
@@ -123,7 +123,7 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
       </div>
       <div class="card">
         <ul>
-          {site.sustainability.map((s) => (<li>• {s}</li>))}
+          {site.sustainability.map((s) => (<li>{s}</li>))}
         </ul>
       </div>
     </div>
