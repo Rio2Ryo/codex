@@ -1,0 +1,37 @@
+---
+interface Props { steps: string[]; center?: string }
+const { steps, center = '循環設計' } = Astro.props as Props;
+const radius = 120;
+---
+<div class="cycle" style={`--r:${radius}px`}>
+  <div class="ring"></div>
+  <div class="center">
+    <strong>{center}</strong>
+    <div class="muted" style="font-size:12px">IEO → 拠点 → 計測 → 記録 → NFT → 再投資</div>
+  </div>
+  {steps.map((s, i) => {
+    const ang = (360/steps.length) * i - 90; // start at top
+    return (
+      <div class="node reveal" style={`--ang:${ang}deg`}>
+        <div class="badge">{i+1}</div>
+        <div class="label">{s}</div>
+      </div>
+    );
+  })}
+  {steps.map((_, i) => {
+    const ang = (360/steps.length) * i - 90;
+    return (<div class="arrow" style={`--ang:${ang}deg`}></div>);
+  })}
+</div>
+
+<style is:global>
+.cycle{ position:relative; width:min(420px, 90vw); aspect-ratio:1/1; margin:auto }
+.cycle .ring{ position:absolute; inset:8%; border-radius:50%; background: radial-gradient(closest-side, #0c261f 60%, transparent 61%), conic-gradient(from 0deg, #1dfaa033, #00e0ff33, #1dfaa033); border:1px solid var(--outline); filter: drop-shadow(0 10px 30px #0008) }
+.cycle .center{ position:absolute; inset:35% 25%; display:grid; place-items:center; text-align:center; padding:10px; border-radius:16px; background:#0f2a22cc; border:1px solid #184c3d; box-shadow: var(--shadow) }
+.cycle .node{ position:absolute; left:50%; top:50%; transform: rotate(var(--ang)) translate(var(--r)) rotate(calc(var(--ang) * -1)); width: 44%; }
+.cycle .node .badge{ width:28px; height:28px; border-radius:999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; display:grid; place-items:center; font-weight:800; box-shadow: 0 4px 16px #00ffab44 }
+.cycle .node .label{ margin-top:6px; font-size: 14px }
+.cycle .arrow{ position:absolute; left:50%; top:50%; width: calc(var(--r) - 30px); height:2px; background: linear-gradient(90deg, #00ffc2, transparent); transform-origin:left center; transform: rotate(var(--ang)) translateX(30px); opacity:.6 }
+.cycle .arrow::after{ content:""; position:absolute; right:-6px; top:-3px; border:6px solid transparent; border-left-color:#00ffc2; opacity:.8 }
+</style>
+

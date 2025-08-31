@@ -4,12 +4,13 @@ import site from "../data/site.json";
 import HeroPro from "../components/HeroPro.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import Applications from "../components/Applications.astro";
-import Problems from "../components/Problems.astro";
+import ProblemCards from "../components/ProblemCards.astro";
 import Strengths from "../components/Strengths.astro";
-import EcosystemFlow from "../components/EcosystemFlow.astro";
+import CycleDiagram from "../components/CycleDiagram.astro";
 import TokenomicsChart from "../components/TokenomicsChart.astro";
 import TokenDetails from "../components/TokenDetails.astro";
 import Marquee from "../components/Marquee.astro";
+import PhotoStrip from "../components/PhotoStrip.astro";
 
 const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null;
 ---
@@ -19,6 +20,12 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
   <section class="section">
     <div class="container">
       <Marquee items={site.partners} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <PhotoStrip photos={site.photos} />
     </div>
   </section>
 
@@ -89,7 +96,7 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
   <section id="problems" class="section">
     <div class="container">
       <SectionHeader eyebrow="Problems & Solutions" title="解決したい課題とアプローチ" />
-      <Problems categories={site.problems} />
+      <ProblemCards categories={site.problems} />
     </div>
   </section>
 
@@ -103,7 +110,7 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
   <section id="ecosystem" class="section">
     <div class="container">
       <SectionHeader eyebrow="Ecosystem" title="循環する価値設計" />
-      <EcosystemFlow flow={site.ecosystem} />
+      <CycleDiagram steps={site.ecosystemCycle} center="循環設計" />
     </div>
   </section>
 

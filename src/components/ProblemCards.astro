@@ -1,0 +1,29 @@
+---
+interface Cat { title: string; issues: string[]; solutions: string[] }
+interface Props { categories: Cat[] }
+const { categories } = Astro.props as Props;
+const icons: Record<string,string> = {
+  '社会的課題': '🌍',
+  '経済的課題': '💹',
+  '環境的課題': '🌿'
+};
+---
+<div class="grid grid-3">
+  {categories.map((c) => (
+    <article class="panel reveal" aria-labelledby={c.title}>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div class="pill">{icons[c.title] || '◎'}</div>
+        <h3 id={c.title} style="margin:0">{c.title}</h3>
+      </div>
+      <div class="muted" style="font-weight:700; letter-spacing:.2px; margin-bottom:6px">課題</div>
+      <ul style="margin:0 0 10px 0">
+        {c.issues.map(i => (<li style="font-size:15px">• {i}</li>))}
+      </ul>
+      <div class="muted" style="font-weight:700; letter-spacing:.2px; margin-bottom:6px">EDENの解決</div>
+      <ul style="margin:0">
+        {c.solutions.map(s => (<li style="font-size:15px">• {s}</li>))}
+      </ul>
+    </article>
+  ))}
+</div>
+

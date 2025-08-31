@@ -81,6 +81,19 @@
     "EGTステーキングに応じたNFT付与",
     "NFTの二次市場流通と価値創造"
   ],
+  "ecosystemCycle": [
+    "IEO/トークン流通で資金調達",
+    "拠点建設・拡張（太陽光×蓄電）",
+    "CO₂吸収量を計測",
+    "オンチェーンに記録・監査",
+    "EGTステーキングに応じNFT付与",
+    "二次市場流通・透明会計で再投資"
+  ],
+  "photos": [
+    { "src": "/images/facility-plant.svg", "alt": "藻類培養施設のイメージ（均質化生産）" },
+    { "src": "/images/algae-leaf.svg", "alt": "マザーベジタブル（藻類）の象徴図" },
+    { "src": "/images/hero-nature.svg", "alt": "自然グラデーションの背景アート" }
+  ],
   "useOfProceeds": [
     { "label": "生産拠点構築・拡張", "percent": 60, "color": "#39ff88" },
     { "label": "システム開発", "percent": 20, "color": "#00e0ff" },
