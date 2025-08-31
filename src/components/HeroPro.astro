@@ -3,8 +3,8 @@ interface Props { site: any }
 const { site } = Astro.props as Props;
 ---
 <section class="hero section">
-  <div class="hero-aurora" aria-hidden="true"></div>
-  <div class="beam" aria-hidden="true"></div>
+  <div class="hero-aurora" aria-hidden="true" style="opacity:.45"></div>
+  <div class="beam" aria-hidden="true" style="opacity:.28"></div>
   <img src={site.heroImage || '/images/generated/hero.png'} alt="自然のパターン背景" onerror="this.src='/images/hero-nature.svg'" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.32; mix-blend-mode:screen; pointer-events:none" />
   <div class="container">
     <span class="eyebrow reveal">{site.siteName}</span>
