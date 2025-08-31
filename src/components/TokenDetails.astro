@@ -1,0 +1,26 @@
+---
+interface Detail { label: string; value: string }
+interface Props {
+  details: Detail[];
+  lockup?: string;
+  burn?: string;
+}
+const { details, lockup, burn } = Astro.props as Props;
+---
+<div class="panel reveal">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+    {details.map((d) => (
+      <div>
+        <div class="muted">{d.label}</div>
+        <strong>{d.value}</strong>
+      </div>
+    ))}
+  </div>
+  {(lockup || burn) && (
+    <div style="margin-top:12px; display:grid; gap:8px;">
+      {lockup && <div><div class="muted">ロックアップ</div><strong>{lockup}</strong></div>}
+      {burn && <div><div class="muted">バーン</div><strong>{burn}</strong></div>}
+    </div>
+  )}
+</div>
+

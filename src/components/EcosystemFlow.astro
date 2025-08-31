@@ -1,0 +1,13 @@
+---
+interface Props { flow: string[] }
+const { flow } = Astro.props as Props;
+---
+<div class="flow">
+  {flow.map((f, i) => (
+    <>
+      <div class="node reveal"><strong>Step {i+1}</strong><div class="muted">{f}</div></div>
+      {i < flow.length - 1 && <div class="arrow">↓</div>}
+    </>
+  ))}
+</div>
+

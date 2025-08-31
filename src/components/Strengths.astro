@@ -1,0 +1,13 @@
+---
+interface Props { points: { title: string; desc: string }[] }
+const { points } = Astro.props as Props;
+---
+<div class="grid grid-2">
+  {points.map((p) => (
+    <div class="panel reveal">
+      <strong style="font-size:18px">{p.title}</strong>
+      <p class="muted">{p.desc}</p>
+    </div>
+  ))}
+</div>
+

@@ -32,15 +32,22 @@ const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロック
     }</script>
   </head>
   <body>
+    <script is:inline>
+      const io = new IntersectionObserver((es)=>{
+        for (const e of es){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} }
+      },{threshold: .08});
+      addEventListener('DOMContentLoaded',()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)));
+    </script>
     <header class="site">
       <div class="container nav">
         <a class="brand" href="#top"><span class="dot"></span> {site.siteName}</a>
         <nav style="display:flex; gap:16px; align-items:center">
-          <a href="#about">About</a>
-          <a href="#sustainability">Sustainability</a>
-          <a href="#token">Tokenomics</a>
+          <a href="#overview">概要</a>
+          <a href="#applications">応用分野</a>
+          <a href="#problems">課題と解決</a>
+          <a href="#ecosystem">エコシステム</a>
+          <a href="#token">Token</a>
           <a href="#ieo">IEO</a>
-          <a href="#roadmap">Roadmap</a>
           <a href="#faq">FAQ</a>
           <a class="btn primary" href="#cta" aria-label="IEOに参加">参加する</a>
         </nav>

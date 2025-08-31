@@ -2,28 +2,32 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import site from "../data/site.json";
 import Hero from "../components/Hero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Applications from "../components/Applications.astro";
+import Problems from "../components/Problems.astro";
+import Strengths from "../components/Strengths.astro";
+import EcosystemFlow from "../components/EcosystemFlow.astro";
 import TokenomicsChart from "../components/TokenomicsChart.astro";
+import TokenDetails from "../components/TokenDetails.astro";
 
 const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null;
 ---
 <BaseLayout title={`${site.siteName} — ${site.tagline}`} description={site.description}>
   <Hero site={site} />
 
-  <section id="about" class="section">
+  <section id="overview" class="section">
     <div class="container grid grid-2">
       <div>
-        <span class="eyebrow">About</span>
-        <h2>藻類培養 × ブロックチェーンで環境価値を可視化</h2>
-        <p class="muted">{site.description}</p>
-        <ul>
+        <SectionHeader eyebrow="Overview" title={site.intro.headline} sub={site.intro.copy} />
+        <ul class="reveal">
           {site.token.utilities.map((u) => (<li>• {u}</li>))}
         </ul>
-        <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+        <div class="reveal" style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
           <a class="btn ghost" href={site.links.docs}>Docs</a>
           <a class="btn ghost" href={site.links.github}>GitHub</a>
         </div>
       </div>
-      <div class="card">
+      <div class="panel reveal">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
           <div><span class="eyebrow">IEO Countdown</span><h3 style="margin:6px 0 0">上場まで</h3></div>
           <span class="pill">{site.ieo.exchange || 'TBA'}</span>
@@ -68,6 +72,34 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
     </script>
   </section>
 
+  <section id="applications" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Applications" title="応用分野" sub="マザーベジタブルの産業応用" />
+      <Applications items={site.applications} />
+    </div>
+  </section>
+
+  <section id="problems" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Problems & Solutions" title="解決したい課題とアプローチ" />
+      <Problems categories={site.problems} />
+    </div>
+  </section>
+
+  <section id="strengths" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Advantages" title="本プロジェクトの優位性" />
+      <Strengths points={site.strengths} />
+    </div>
+  </section>
+
+  <section id="ecosystem" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Ecosystem" title="循環する価値設計" />
+      <EcosystemFlow flow={site.ecosystem} />
+    </div>
+  </section>
+
   <section id="sustainability" class="section">
     <div class="container grid grid-2">
       <div>
@@ -85,19 +117,23 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
 
   <section id="token" class="section">
     <div class="container">
-      <span class="eyebrow">Tokenomics</span>
-      <h2>{site.token.symbol} トークノミクス</h2>
+      <span class="eyebrow">Token</span>
+      <h2>{site.token.symbol} 概要と配分</h2>
       <div class="grid grid-2">
-        <div class="card">
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
-            <div><div class="muted">トークン</div><strong>{site.token.symbol}</strong></div>
-            <div><div class="muted">総供給</div><strong>{site.token.totalSupply}</strong></div>
-            <div><div class="muted">ネットワーク</div><strong>{site.token.network}</strong></div>
-            <div><div class="muted">コントラクト</div><strong>{site.token.contract || 'TBA'}</strong></div>
-          </div>
-        </div>
+        <TokenDetails details={[
+          {label:'トークン', value: site.token.symbol},
+          {label:'総供給', value: site.token.totalSupply},
+          {label:'ネットワーク', value: site.token.network},
+          {label:'コントラクト', value: site.token.contract || 'TBA'}
+        ]} lockup={site.lockup} burn={site.burn} />
         <div class="card">
           <TokenomicsChart data={site.tokenomics} />
+        </div>
+      </div>
+      <div class="panel reveal" style="margin-top:18px">
+        <strong>資金使途</strong>
+        <div style="margin-top:12px">
+          <TokenomicsChart data={site.useOfProceeds} />
         </div>
       </div>
     </div>

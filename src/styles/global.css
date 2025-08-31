@@ -10,6 +10,8 @@
   --danger: #ff6b6b;
   --card: #0f2820cc;
   --outline: #1f4b3d;
+  --ring: #49ffb233;
+  --shadow: 0 20px 50px #00000050, inset 0 1px 0 #ffffff05;
 }
 
 *{box-sizing:border-box}
@@ -41,6 +43,8 @@ body{
 .muted{ color: var(--muted) }
 
 .card{ background: var(--card); border: 1px solid var(--outline); border-radius: 16px; padding: 20px; backdrop-filter: blur(6px); }
+.card.elevated{ box-shadow: var(--shadow); border-color: #1b5949 }
+.panel{ background: linear-gradient(180deg, #0a221b 0%, #0c2a20 100%); border:1px solid #144335; border-radius:20px; padding:28px; box-shadow: var(--shadow); }
 
 .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 12px 18px; border-radius: 999px; text-decoration:none; font-weight:600; border:1px solid transparent; transition: all .2s ease; }
 .btn.primary{ background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%); color:#042315; box-shadow: 0 10px 30px #00ffab33; }
@@ -83,3 +87,11 @@ summary{ cursor:pointer; font-weight:600 }
 .pill{ font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--outline); color: var(--muted) }
 .kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#0a221b; border:1px solid #113a2f; padding:2px 6px; border-radius:6px }
 
+/* Reveal on scroll */
+.reveal{ opacity:0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease }
+.reveal.show{ opacity:1; transform:none }
+
+/* Flow diagram */
+.flow{ display:grid; gap:18px }
+.flow .node{ padding:16px 18px; background:#0f2a22; border:1px solid var(--outline); border-radius:12px; box-shadow: var(--shadow) }
+.flow .arrow{ text-align:center; color: var(--muted) }

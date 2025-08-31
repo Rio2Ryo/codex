@@ -1,0 +1,18 @@
+---
+interface AppItem { icon?: string; title: string; desc: string }
+interface Props { items: AppItem[] }
+const { items } = Astro.props as Props;
+---
+<div class="grid grid-3">
+  {items.map((a) => (
+    <div class="panel reveal">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div class="pill">{a.icon || '◎'}</div>
+        <strong>{a.title}</strong>
+      </div>
+      <div class="muted">{a.desc}</div>
+    </div>
+  ))}
+  
+</div>
+
