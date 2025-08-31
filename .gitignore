@@ -5,3 +5,4 @@ dist
 .vercel
 .astro-dev.log
 *.local
+tmp_*.txt
