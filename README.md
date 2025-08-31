@@ -47,3 +47,31 @@ Whitepaper は `public/whitepaper.pdf` に置いてリンクします(現在は�
 
 ---
 Made with Astro.
+ 
+## CI/CD (Vercel ゼロタッチ運用)
+ 
+本リポジトリには GitHub Actions でのVercel本番デプロイが含まれます。
+`/.github/workflows/deploy-vercel.yml` を使用し、`main` へのpushで自動デプロイされます。
+ 
+必要なGitHub Secrets（リポジトリに登録）：
+ 
+- `VERCEL_TOKEN`: Vercel Personal Access Token（最低限: Projects/Deployments権限）
+- `VERCEL_ORG_ID`: 対象のOrg ID（個人の場合は個人アカウントID）
+- `VERCEL_PROJECT_ID`: Vercel上のProject ID（新規作成時は `vercel link` 後に取得）
+ 
+Secrets 登録例（ローカルに gh CLI がある場合）:
+ 
+```bash
+gh secret set VERCEL_TOKEN --body "<your_vercel_token>"
+gh secret set VERCEL_ORG_ID --body "<your_org_id>"
+gh secret set VERCEL_PROJECT_ID --body "<your_project_id>"
+```
+ 
+初回だけ必要な作業：
+ 
+1) Vercelにプロジェクト作成（プロジェクト名は `codex` 推奨）
+2) 上記3つのSecretsを登録
+3) `main` にpush → 自動で `vercel build` → `vercel deploy --prebuilt --prod`
+ 
+備考：VercelダッシュボードでGit連携を有効にする場合、Secrets不要で運用可能です。
+ただし本Workflowでも安定運用できます。
