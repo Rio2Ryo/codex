@@ -10,7 +10,8 @@
     "discord": "#",
     "github": "#"
   },
-  "heroImage": "https://source.unsplash.com/1600x900/?algae,pond,solar%20farm,green",
+  "heroImage": "/images/generated/hero.png",
+  "heroImageFallback": "https://source.unsplash.com/1600x900/?algae,pond,solar%20farm,green",
   "partners": ["ASEAN Gov.", "Research Univ.", "Green Energy", "BioTech Lab", "Climate DAO"],
   "stats": [
     { "label": "展開国数", "value": 8, "suffix": "+" },
@@ -91,9 +92,9 @@
     "二次市場流通・透明会計で再投資"
   ],
   "photos": [
-    { "src": "https://source.unsplash.com/900x600/?bioreactor,laboratory,green", "alt": "フォトバイオリアクターのイメージ" },
-    { "src": "https://source.unsplash.com/900x600/?microalgae,macro,leaf,teal", "alt": "藻類・葉のマクロ" },
-    { "src": "https://source.unsplash.com/900x600/?solar%20pond,renewable,landscape,teal", "alt": "自然と再エネの景観" }
+    { "src": "/images/generated/facility.png", "fallback": "https://source.unsplash.com/900x600/?bioreactor,laboratory,green", "alt": "フォトバイオリアクターのイメージ" },
+    { "src": "/images/generated/leaf.png", "fallback": "https://source.unsplash.com/900x600/?microalgae,macro,leaf,teal", "alt": "藻類・葉のマクロ" },
+    { "src": "/images/generated/hero.png", "fallback": "https://source.unsplash.com/900x600/?solar%20pond,renewable,landscape,teal", "alt": "自然と再エネの景観" }
   ],
   "useOfProceeds": [
     { "label": "生産拠点構築・拡張", "percent": 60, "color": "#39ff88" },
