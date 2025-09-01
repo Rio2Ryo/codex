@@ -80,6 +80,9 @@ header .brand{ display:flex; align-items:center; gap:10px; font-weight:800; lett
 .brand .dot{ width:10px; height:10px; border-radius:999px; background: radial-gradient(circle at 30% 30%, #fff, var(--accent) 40%, #0f0 80%); box-shadow:0 0 16px #39ff8899 }
 header .nav nav{ display:flex; gap:16px; align-items:center; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none }
 header .nav nav::-webkit-scrollbar{ display:none }
+@media (max-width: 420px){
+  header .brand{ font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 60vw }
+}
 
 /* Hero */
 .hero{ position: relative; padding: 120px 0 72px; overflow: hidden; }

@@ -24,14 +24,33 @@ const radius = 120;
   })}
 </div>
 
-<style is:global>
-.cycle{ position:relative; width:min(420px, 90vw); aspect-ratio:1/1; margin:auto }
-.cycle .ring{ position:absolute; inset:8%; border-radius:50%; background: radial-gradient(closest-side, #0c261f 60%, transparent 61%), conic-gradient(from 0deg, #1dfaa033, #00e0ff33, #1dfaa033); border:1px solid var(--outline); filter: drop-shadow(0 10px 30px #0008) }
-.cycle .center{ position:absolute; inset:35% 25%; display:grid; place-items:center; text-align:center; padding:10px; border-radius:16px; background:#0f2a22cc; border:1px solid #184c3d; box-shadow: var(--shadow) }
-.cycle .node{ position:absolute; left:50%; top:50%; transform: rotate(var(--ang)) translate(var(--r)) rotate(calc(var(--ang) * -1)); width: 44%; }
-.cycle .node .badge{ width:28px; height:28px; border-radius:999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; display:grid; place-items:center; font-weight:800; box-shadow: 0 4px 16px #00ffab44 }
-.cycle .node .label{ margin-top:6px; font-size: 14px }
-.cycle .arrow{ position:absolute; left:50%; top:50%; width: calc(var(--r) - 30px); height:2px; background: linear-gradient(90deg, #00ffc2, transparent); transform-origin:left center; transform: rotate(var(--ang)) translateX(30px); opacity:.6 }
-.cycle .arrow::after{ content:""; position:absolute; right:-6px; top:-3px; border:6px solid transparent; border-left-color:#00ffc2; opacity:.8 }
-</style>
+<ol class="cycle-list">
+  {steps.map((s, i) => (
+    <li>
+      <span class="n">{i+1}</span>
+      <span class="t">{s}</span>
+    </li>
+  ))}
+  </ol>
 
+<style is:global>
+.cycle{ position:relative; width:min(420px, 92vw); aspect-ratio:1/1; margin:auto }
+.cycle .ring{ position:absolute; inset:8%; border-radius:50%; background: radial-gradient(closest-side, #0c261f 60%, transparent 61%), conic-gradient(from 0deg, #1dfaa033, #00e0ff33, #1dfaa033); border:1px solid var(--outline); filter: drop-shadow(0 10px 30px #0008) }
+.cycle .center{ position:absolute; inset:36% 26%; display:grid; place-items:center; text-align:center; padding:10px; border-radius:16px; background:#0f2a22cc; border:1px solid #184c3d; box-shadow: var(--shadow) }
+.cycle .node{ position:absolute; left:50%; top:50%; transform: rotate(var(--ang)) translate(var(--r)) rotate(calc(var(--ang) * -1)); width: 42%; }
+.cycle .node .badge{ width:26px; height:26px; border-radius:999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; display:grid; place-items:center; font-weight:800; box-shadow: 0 4px 16px #00ffab44; font-size:12px }
+.cycle .node .label{ margin-top:6px; font-size: 13px; line-height:1.35 }
+.cycle .arrow{ position:absolute; left:50%; top:50%; width: calc(var(--r) - 30px); height:2px; background: linear-gradient(90deg, #00ffc2, transparent); transform-origin:left center; transform: rotate(var(--ang)) translateX(30px); opacity:.5 }
+.cycle .arrow::after{ content:""; position:absolute; right:-6px; top:-3px; border:6px solid transparent; border-left-color:#00ffc2; opacity:.8 }
+
+/* Responsive fallback: list */
+.cycle-list{ display:none; margin:0; padding:0; }
+.cycle-list li{ list-style:none; display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--outline) }
+.cycle-list .n{ display:inline-grid; place-items:center; min-width:26px; height:26px; border-radius:999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:#042315; font-weight:800; font-size:12px }
+.cycle-list .t{ flex:1 }
+
+@media (max-width: 760px){
+  .cycle{ display:none }
+  .cycle-list{ display:block }
+}
+</style>
