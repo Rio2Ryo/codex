@@ -75,6 +75,50 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+      - name: Create Vercel Protection Bypass (Preview)
+        if: github.ref_name != 'main'
+        id: bypass_preview
+        continue-on-error: true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -e
+          echo "Creating protection bypass link for Preview..."
+          now=$(date +%s)
+          exp_ms=$(( (now + 7*24*3600) * 1000 ))
+          rm -f resp_preview.json
+          URL1="https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/protection-bypass"
+          CODE=$(curl -sS -o resp_preview.json -w "%{http_code}" -X POST "$URL1" \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"target\":\"preview\",\"note\":\"CI auto-bypass (preview)\",\"expiresAt\":$exp_ms}") || true
+          if [ "$CODE" != "200" ] && [ "$CODE" != "201" ]; then
+            echo "v9 endpoint returned $CODE, trying v10..."
+            URL2="https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/protection-bypass"
+            CODE=$(curl -sS -o resp_preview.json -w "%{http_code}" -X POST "$URL2" \
+              -H "Authorization: Bearer $VERCEL_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"target\":\"preview\",\"note\":\"CI auto-bypass (preview)\",\"expiresAt\":$exp_ms}") || true
+          fi
+          echo "HTTP $CODE"
+          cat resp_preview.json || true
+          BYPASS_URL=$(jq -r '.bypassUrl // .url // .link // empty' resp_preview.json || true)
+          if [ -n "$BYPASS_URL" ]; then
+            echo "bypass_url=$BYPASS_URL" >> "$GITHUB_OUTPUT"
+            echo "Preview Bypass URL: $BYPASS_URL" | tee bypass-url-preview.txt
+            echo "Preview Bypass URL: $BYPASS_URL" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Failed to create preview bypass link"
+          fi
+
+      - name: Upload Preview Bypass URL artifact
+        if: github.ref_name != 'main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vercel-bypass-url-preview
+          path: bypass-url-preview.txt
+
       - name: Create Vercel Protection Bypass (Production)
         if: github.ref_name == 'main'
         id: bypass
