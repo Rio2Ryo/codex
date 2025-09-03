@@ -48,3 +48,46 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+      - name: Create Vercel Protection Bypass (Production)
+        id: bypass
+        continue-on-error: true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -e
+          echo "Creating protection bypass link for Production..."
+          now=$(date +%s)
+          exp_ms=$(( (now + 7*24*3600) * 1000 ))
+          rm -f resp.json
+          # Try v9 endpoint
+          URL1="https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/protection-bypass"
+          CODE=$(curl -sS -o resp.json -w "%{http_code}" -X POST "$URL1" \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"target\":\"production\",\"note\":\"CI auto-bypass\",\"expiresAt\":$exp_ms}") || true
+          if [ "$CODE" != "200" ] && [ "$CODE" != "201" ]; then
+            echo "v9 endpoint returned $CODE, trying v10..."
+            URL2="https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/protection-bypass"
+            CODE=$(curl -sS -o resp.json -w "%{http_code}" -X POST "$URL2" \
+              -H "Authorization: Bearer $VERCEL_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"target\":\"production\",\"note\":\"CI auto-bypass\",\"expiresAt\":$exp_ms}") || true
+          fi
+          echo "HTTP $CODE"
+          cat resp.json || true
+          BYPASS_URL=$(jq -r '.bypassUrl // .url // .link // empty' resp.json || true)
+          if [ -n "$BYPASS_URL" ]; then
+            echo "bypass_url=$BYPASS_URL" >> "$GITHUB_OUTPUT"
+            echo "Bypass URL: $BYPASS_URL" | tee bypass-url.txt
+            echo "Bypass URL: $BYPASS_URL" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Failed to create bypass link"
+          fi
+
+      - name: Upload Bypass URL artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vercel-bypass-url
+          path: bypass-url.txt
