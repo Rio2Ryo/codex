@@ -1,0 +1,13 @@
+---
+interface Props { src: string; alt: string; fallback?: string; ratio?: string }
+const { src, alt, fallback = '/images/facility-plant.svg', ratio = '16 / 9' } = Astro.props as Props;
+---
+<figure class="section-image">
+  <img src={src} alt={alt} onerror={`this.onerror=null;this.src='${fallback}'`} />
+  <figcaption class="sr-only">{alt}</figcaption>
+</figure>
+
+<style is:global>
+.section-image{ margin:0 }
+.section-image img{ width:100%; height:auto; border-radius:16px; border:1px solid var(--outline); box-shadow: var(--shadow); aspect-ratio: var(--ratio, 16/9); object-fit:cover }
+</style>

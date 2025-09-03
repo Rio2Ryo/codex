@@ -77,6 +77,8 @@ header .nav{ display:flex; align-items:center; justify-content:space-between; ga
 header .nav a{ color: var(--muted); text-decoration:none; font-weight:600; }
 header .nav a:hover{ color: var(--text); }
 header .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px }
+.brand .logo{ height:28px; width:auto; display:block }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
 .brand .dot{ width:10px; height:10px; border-radius:999px; background: radial-gradient(circle at 30% 30%, #fff, var(--accent) 40%, #0f0 80%); box-shadow:0 0 16px #39ff8899 }
 header .nav nav{ display:flex; gap:16px; align-items:center; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none }
 header .nav nav::-webkit-scrollbar{ display:none }

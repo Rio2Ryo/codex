@@ -10,6 +10,7 @@
     "discord": "#",
     "github": "#"
   },
+  "logo": "/images/logo.png",
   "heroImage": "/images/generated/hero.png",
   "heroImageFallback": "https://source.unsplash.com/1600x900/?algae,pond,solar%20farm,green",
   "partners": ["ASEAN Gov.", "Research Univ.", "Green Energy", "BioTech Lab", "Climate DAO"],
@@ -139,7 +140,11 @@
     "吸収量データをブロックチェーンに記録し可視化",
     "太陽光発電・蓄電システムを活用した省エネ運用"
   ],
-  "roadmap": [],
+  "roadmap": [
+    { "title": "IEO / 上場", "period": "Q4 2025", "items": ["IEO実施・上場", "初期LP/流動性確保", "公式ダッシュボード公開"] },
+    { "title": "ステーキング v1", "period": "Q1 2026", "items": ["EGTステーキング開始", "CO₂吸収量NFT発行", "監査レポート公開"] },
+    { "title": "拠点拡張", "period": "Q2 2026", "items": ["ASEANでの拠点増設", "計測/記録の自動化", "パートナー連携強化"] }
+  ],
   "faq": [
     { "q": "IEOの詳細は?", "a": "取引所・開始日時・価格は準備中です。確定後に本ページとSNSで告知します。" },
     { "q": "EGTのユーティリティは?", "a": "ステーキングによりCO₂吸収量に連動したNFTを受け取り、二次市場で売買が可能です。" },

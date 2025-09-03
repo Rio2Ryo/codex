@@ -30,5 +30,9 @@ async function gen(name, prompt, size = '1536x1024') {
 await gen('hero', prompts.hero, '1536x1024');
 await gen('leaf', prompts.leaf, '1024x1024');
 await gen('facility', prompts.facility, '1536x1024');
+await gen('roadmap', prompts.roadmap, '1536x1024');
+await gen('apps', prompts.apps, '1536x1024');
+await gen('sustainability', prompts.sustainability, '1536x1024');
+await gen('token', prompts.token, '1024x1024');
 
 console.log('Done.');

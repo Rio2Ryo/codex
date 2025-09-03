@@ -41,7 +41,14 @@ const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロック
     </script>
     <header class="site">
       <div class="container nav">
-        <a class="brand" href="#top"><span class="dot"></span> {site.siteName}</a>
+        <a class="brand" href="#top">
+          {site.logo ? (
+            <img src={site.logo} alt={site.siteName} class="logo" />
+          ) : (
+            <span class="dot"></span>
+          )}
+          <span class="sr-only">{site.siteName}</span>
+        </a>
         <nav style="display:flex; gap:16px; align-items:center">
           <a href="#overview">概要</a>
           <a href="#applications">応用分野</a>

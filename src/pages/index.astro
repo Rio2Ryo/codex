@@ -11,6 +11,7 @@ import TokenomicsChart from "../components/TokenomicsChart.astro";
 import TokenDetails from "../components/TokenDetails.astro";
 import Marquee from "../components/Marquee.astro";
 import PhotoStrip from "../components/PhotoStrip.astro";
+import SectionImage from "../components/SectionImage.astro";
 
 const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null;
 ---
@@ -89,6 +90,9 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
   <section id="applications" class="section">
     <div class="container">
       <SectionHeader eyebrow="Applications" title="応用分野" sub="マザーベジタブルの産業応用" />
+      <div style="margin:12px 0 16px">
+        <SectionImage src="/images/generated/apps.png" alt="応用分野のイメージ" fallback="https://source.unsplash.com/1200x700/?microalgae,industry,green" />
+      </div>
       <Applications items={site.applications} />
     </div>
   </section>
@@ -114,12 +118,35 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
     </div>
   </section>
 
+  <section id="roadmap" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Roadmap" title="進捗とこれから" />
+      <div class="grid grid-3">
+        {site.roadmap.map((r) => (
+          <div class="panel reveal">
+            <div class="pill">{r.period}</div>
+            <h3 style="margin:8px 0 6px">{r.title}</h3>
+            <ul>
+              {r.items.map((i) => (<li>{i}</li>))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:16px">
+        <SectionImage src="/images/generated/roadmap.png" alt="ロードマップのイメージ" fallback="https://source.unsplash.com/1200x700/?timeline,roadmap,green" />
+      </div>
+    </div>
+  </section>
+
   <section id="sustainability" class="section">
     <div class="container grid grid-2">
       <div>
         <span class="eyebrow">Sustainability</span>
         <h2>自然に「プラス」の連鎖を生むデザイン</h2>
         <p class="muted">チェーンの成長が、そのまま地球の回復へと繋がる設計。透明性のあるオンチェーン会計で、どれだけ自然に還元されたかがリアルタイムに追跡できます。</p>
+        <div style="margin:10px 0 0">
+          <SectionImage src="/images/generated/sustainability.png" alt="サステナビリティのイメージ" fallback="https://source.unsplash.com/1200x700/?forest,water,renewable,green" />
+        </div>
       </div>
       <div class="card">
         <ul>
@@ -143,6 +170,9 @@ const ieoStart = site.ieo?.start ? new Date(site.ieo.start).toISOString() : null
         <div class="card">
           <TokenomicsChart data={site.tokenomics} />
         </div>
+      </div>
+      <div style="margin-top:16px">
+        <SectionImage src="/images/generated/token.png" alt="トークンのイメージ" fallback="https://source.unsplash.com/1200x700/?blockchain,token,green" />
       </div>
       <div class="panel reveal" style="margin-top:18px">
         <strong>資金使途</strong>
