@@ -50,14 +50,22 @@ const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロック
           <span class="sr-only">{site.siteName}</span>
         </a>
         <nav style="display:flex; gap:16px; align-items:center">
-          <a href="#overview">概要</a>
-          <a href="#applications">応用分野</a>
-          <a href="#problems">課題と解決</a>
-          <a href="#ecosystem">エコシステム</a>
-          <a href="#token">Token</a>
-          <a href="#ieo">IEO</a>
-          <a href="#faq">FAQ</a>
-          <a class="btn primary" href="#cta" aria-label="IEOに参加">参加する</a>
+          {(Array.isArray(site.nav) && site.nav.length) ? (
+            <>
+              {site.nav.map((n:any) => (<a href={n.href}>{n.label}</a>))}
+            </>
+          ) : (
+            <>
+              <a href="#overview">概要</a>
+              <a href="#applications">応用分野</a>
+              <a href="#problems">課題と解決</a>
+              <a href="#ecosystem">エコシステム</a>
+              <a href="#token">Token</a>
+              <a href="#ieo">IEO</a>
+              <a href="#faq">FAQ</a>
+            </>
+          )}
+          <a class="btn primary" href="#cta" aria-label={site.cta?.primary || '参加する'}>{site.cta?.primary || '参加する'}</a>
         </nav>
       </div>
     </header>
@@ -69,7 +77,7 @@ const { title = 'EDEN GREENS PROJECT', description = '藻類培養×ブロック
         <div style="display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap: wrap;">
           <div>© {new Date().getFullYear()} {site.siteName} — All rights reserved.</div>
           <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-            <a class="pill" href="/whitepaper.pdf">Whitepaper</a>
+            <a class="pill" href={site.links.whitepaper}>Whitepaper</a>
             <LinkPill href={site.links.github} label="GitHub" />
             <LinkPill href={site.links.twitter} label="X/Twitter" />
             <LinkPill href={site.links.discord} label="Discord" />

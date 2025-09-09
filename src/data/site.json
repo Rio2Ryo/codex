@@ -1,16 +1,20 @@
 {
-  "siteName": "EDEN GREENS PROJECT",
-  "tagline": "藻類培養 × Web3 で、気候インパクトを資産に。",
-  "subtitle": "あなたの参加がCO₂吸収を加速し、透明な価値へと変わる。",
-  "description": "2007年に始まった藻類研究により、世界8カ国・70拠点で均質化生産システムを実証。太陽光と蓄電で24/365稼働し、CO₂を安定吸収。IEOとトークン設計で拠点拡張と吸収量の可視化を循環させます。",
+  "siteName": "Mother Vegetable Project",
+  "tagline": "地球最初の生命体による地球再生プロジェクト",
+  "subtitle": "Mother Vegetableの技術で、地球再生をみんなの手で。",
+  "description": "藻類（Mother Vegetable）を核とした地球再生プロジェクト。クリーンな生産とオンチェーン透明性で、参加がそのまま地球の回復へ繋がる循環を設計します。",
   "links": {
-    "whitepaper": "/whitepaper.pdf",
+    "whitepaper": "/Whitepaper_MVT_0909_v2.pdf",
     "docs": "#",
     "twitter": "#",
     "discord": "#",
     "github": "#"
   },
-  "logo": "/images/logo.png",
+  "logo": "/images/mv-logo.svg",
+  "nav": [
+    { "label": "食", "href": "#food" },
+    { "label": "6G", "href": "#sixg" }
+  ],
   "heroImage": "/images/generated/hero.png",
   "heroImageFallback": "https://source.unsplash.com/1600x900/?algae,pond,solar%20farm,green",
   "partners": ["ASEAN Gov.", "Research Univ.", "Green Energy", "BioTech Lab", "Climate DAO"],
@@ -105,7 +109,7 @@
   "lockup": "IEO販売分は販売後6か月間ロック（取引所管理）",
   "burn": "検討中",
   "cta": {
-    "primary": "IEOに参加する",
+    "primary": "参加する",
     "secondary": "ホワイトペーパー"
   },
   "ieo": {

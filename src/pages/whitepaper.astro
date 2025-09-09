@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import site from "../data/site.json";
+const pdfUrl = site.links.whitepaper || "/whitepaper.pdf";
+const pages = [
+  "/images/whitepaper90/pages/page-001.png",
+];
+---
+<BaseLayout title={`${site.siteName} — Whitepaper`} description={site.description}>
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Whitepaper</span>
+      <h2>ホワイトペーパー閲覧</h2>
+      <p class="muted">最新版PDF: <a class="link" href={pdfUrl} target="_blank" rel="noopener">{pdfUrl}</a></p>
+      <div class="card" style="margin-top:12px">
+        <object data={pdfUrl} type="application/pdf" width="100%" height="700">
+          <p>PDFを直接表示できません。<a href={pdfUrl} target="_blank" rel="noopener">こちらからダウンロード</a>してください。</p>
+        </object>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>ページイメージ</h2>
+      <div class="grid grid-2">
+        {pages.map((src) => (
+          <div class="image-card card elevated">
+            <img src={src} alt="Whitepaper page" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
