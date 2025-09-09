@@ -4,7 +4,7 @@ import site from "../data/site.json";
 import HeroLanding from "../components/HeroLanding.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import SectionImage from "../components/SectionImage.astro";
-const wpPages = Array.from({length: 22}, (_,i)=>`/images/whitepaper_mvt/pages/page-${String(i+1).padStart(3,'0')}.png`);
+import WhitepaperContent from "../components/WhitepaperContent.astro";
 ---
 <BaseLayout title={`${site.siteName} — ${site.tagline}`} description={site.description}>
   <HeroLanding site={site} />
@@ -32,22 +32,8 @@ const wpPages = Array.from({length: 22}, (_,i)=>`/images/whitepaper_mvt/pages/pa
 
   <section id="whitepaper" class="section">
     <div class="container">
-      <SectionHeader eyebrow="Whitepaper" title="ホワイトペーパー全文" sub="PDF埋め込み + ページイメージ（LP内で全内容を閲覧可能）" />
-      <div class="card elevated" style="margin-top:12px">
-        <object data={site.links.whitepaper} type="application/pdf" width="100%" height="900">
-          <p>PDFを直接表示できません。<a class="link" href={site.links.whitepaper} target="_blank" rel="noopener">こちらからダウンロード</a>してください。</p>
-        </object>
-      </div>
-      <div style="margin-top:16px">
-        <h3 style="margin:0 0 10px">ページイメージ</h3>
-        <div class="grid grid-2">
-          {wpPages.map((src)=> (
-            <div class="image-card card elevated">
-              <img src={src} alt="Whitepaper page" loading="lazy" />
-            </div>
-          ))}
-        </div>
-      </div>
+      <SectionHeader eyebrow="Whitepaper" title="ホワイトペーパー（整形版）" sub="PDFの内容をWeb向けに再構成" />
+      <WhitepaperContent />
     </div>
   </section>
 

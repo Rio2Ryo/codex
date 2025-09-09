@@ -1,0 +1,46 @@
+---
+import data from "../data/whitepaper-structured.json";
+---
+<div class="wp">
+  <div class="toc card">
+    <div class="eyebrow">Contents</div>
+    <ul>
+      {data.chapters.map((c) => (
+        <li><a href={`#${c.id}`}>{c.title || 'セクション'}</a></li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="chapters">
+    {data.chapters.map((c) => (
+      <article id={c.id} class="panel reveal">
+        <h3 style="margin:0 0 8px">{c.title || 'セクション'}</h3>
+        {c.blocks && c.blocks.length ? (
+          <div class="blocks">
+            {c.blocks.map((b) => (
+              b.type === 'subhead' ? (
+                <h4 class="subhead">{b.text}</h4>
+              ) : (
+                <p class="muted">{b.text}</p>
+              )
+            ))}
+          </div>
+        ) : (
+          <p class="muted">（本文整形中）</p>
+        )}
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+.wp{ display:grid; grid-template-columns: 1fr; gap: 16px }
+@media(min-width: 1100px){ .wp{ grid-template-columns: 280px 1fr; } }
+.toc ul{ margin: 8px 0 0; padding-left: 1.1em }
+.toc li{ margin: 6px 0 }
+.toc a{ color: var(--muted); text-decoration: none }
+.toc a:hover{ color: var(--text) }
+.chapters{ display: grid; gap: 16px }
+.subhead{ margin: 12px 0 6px; color: var(--text) }
+</style>
+
