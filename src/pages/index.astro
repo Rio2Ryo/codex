@@ -4,16 +4,67 @@ import site from "../data/site.json";
 import HeroLanding from "../components/HeroLanding.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import SectionImage from "../components/SectionImage.astro";
-import WhitepaperContent from "../components/WhitepaperContent.astro";
+import TokenDetails from "../components/TokenDetails.astro";
+import TokenomicsChart from "../components/TokenomicsChart.astro";
+// ホワイトペーパーの要旨をLP各セクションへ反映（静的テキスト版）
 ---
 <BaseLayout title={`${site.siteName} — ${site.tagline}`} description={site.description}>
   <HeroLanding site={site} />
 
+  <section id="overview" class="section">
+    <div class="container grid grid-2">
+      <div>
+        <SectionHeader eyebrow="Overview" title="エグゼクティブサマリー" sub="Mother Vegetable（微細藻類）を核に、施設を世界展開してCO₂を24/365で吸収・酸素生成。作れば作るほど地球が良くなる循環を社会実装します。" />
+        <ul class="reveal">
+          <li>均質化された生産システムで安定稼働（太陽光×蓄電・24/365）。</li>
+          <li>自然由来と比較して約700倍のCO₂吸収効率（WP主張）。</li>
+          <li>施設数に比例してインパクトが拡大（大気浄化・生態系回復・人の健康）。</li>
+          <li>7つの産業分野へ原料・エネルギーとして展開し循環を強化。</li>
+          <li>オンチェーン透明性とNFTで個人も参加・価値化。</li>
+        </ul>
+      </div>
+      <div class="panel reveal">
+        <h3 style="margin:0 0 8px">ビジョン</h3>
+        <p class="muted" style="margin:0">環境保全をコスト中心から収益循環型へ転換し、実証済みの生産技術を基盤に、地域・投資家・地球に同時に価値をもたらす自立的エコシステムを構築します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Industries" title="7つの産業応用" sub="食品・医薬・工業・養殖・農業・バイオマス・エネルギーへ展開" />
+      <div class="grid grid-3" style="margin-top:10px">
+        <div class="panel reveal"><h3 style="margin:0 0 6px">食品</h3><div class="muted">高栄養スーパーフード／機能性原料。タンパク・脂質・微量栄養素の供給。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">医薬品</h3><div class="muted">フィコシアニン／フコイダン／アスタキサンチン／EPA・DHA などの活用。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">工業品</h3><div class="muted">バイオプラスチック／化学原料／新素材としての応用。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">養殖</h3><div class="muted">水質浄化と天然飼料の供給で生産性と健全性を両立。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">農業</h3><div class="muted">バイオスティミュラント／土壌改良で収量と環境負荷の両立。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">バイオマス</h3><div class="muted">バイオディーゼル／バイオエタノール／バイオガスの原料化。</div></div>
+        <div class="panel reveal"><h3 style="margin:0 0 6px">エネルギー</h3><div class="muted">再生可能燃料・電力サイクルに組み込み、地域の脱炭素を加速。</div></div>
+      </div>
+    </div>
+  </section>
+
   <section id="food" class="section">
     <div class="container">
-      <SectionHeader eyebrow="Food" title="食 — Mother Vegetable の食領域" sub="栄養・機能・持続性に優れた価値提供" />
-      <div class="panel reveal" style="margin-top:8px">
-        <p class="muted">ホワイトペーパーの「食」セクションをベースに、栄養価の高い食品原料、バイオアクティブ成分、応用可能性（食品・サプリメント・機能性素材など）を要約して掲載します。</p>
+      <SectionHeader eyebrow="Food" title="食 — Mother Vegetable の食領域" sub="栄養・機能・持続性に優れたクリーン原料を提供" />
+      <div class="grid grid-2" style="margin-top:8px">
+        <div class="panel reveal">
+          <h3 style="margin:0 0 8px">主な成分</h3>
+          <ul class="muted">
+            <li>フィコシアニン／フコイダン／アスタキサンチン／EPA・DHA</li>
+            <li>高タンパク・必須アミノ酸・ミネラル・ビタミン群</li>
+            <li>抗酸化・抗炎症など機能性が期待されるバイオアクティブ群</li>
+          </ul>
+        </div>
+        <div class="panel reveal">
+          <h3 style="margin:0 0 8px">応用例</h3>
+          <ul class="muted">
+            <li>スーパーフード／機能性食品／サプリメント原料</li>
+            <li>代替タンパク・代替脂質としてのフードテック活用</li>
+            <li>食品のクリーンラベル化に適合する自然由来素材</li>
+          </ul>
+        </div>
       </div>
       <div style="margin-top:16px">
         <SectionImage src="/images/generated/apps.png" alt="食領域のイメージ" fallback="https://source.unsplash.com/1200x700/?superfood,algae,healthy" />
@@ -23,17 +74,109 @@ import WhitepaperContent from "../components/WhitepaperContent.astro";
 
   <section id="sixg" class="section">
     <div class="container">
-      <SectionHeader eyebrow="6G" title="6G — 次世代通信 × 地球再生" sub="データ連携・透明性・分散化が支える循環設計" />
-      <div class="panel reveal">
-        <p class="muted">ホワイトペーパーの「6G」関連内容を要約し、分散ネットワーク、データ可視化、オンチェーン証跡の連携など、地球再生のための情報基盤としての位置づけを説明します。</p>
+      <SectionHeader eyebrow="Data Transparency" title="6G（データ基盤）× 地球再生" sub="分散・可視化・リアルタイム性でインパクトを証明" />
+      <div class="grid grid-2" style="margin-top:8px">
+        <div class="panel reveal">
+          <h3 style="margin:0 0 8px">オンチェーン透明性</h3>
+          <p class="muted" style="margin:0">各拠点のCO₂吸収量や運転状況をオンチェーンに記録し、第三者検証可能な形で公開。資金の使途やNFT発行記録も追跡可能に。</p>
+        </div>
+        <div class="panel reveal">
+          <h3 style="margin:0 0 8px">データ同化とUI</h3>
+          <p class="muted" style="margin:0">IoT/センシング×ダッシュボードでリアルタイム可視化。参加者は自分の貢献とプロジェクトの進捗を同一画面で把握できます。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="whitepaper" class="section">
+  <section id="project" class="section">
     <div class="container">
-      <SectionHeader eyebrow="Whitepaper" title="ホワイトペーパー（整形版）" sub="PDFの内容をWeb向けに再構成" />
-      <WhitepaperContent />
+      <SectionHeader eyebrow="Project" title="プロジェクト詳細" sub="施設→CO₂吸収→酸素生成→製品供給→再投資の循環で、作れば作るほど地球が良くなる設計。" />
+      <div class="grid grid-3" style="margin-top:10px">
+        <div class="card reveal">
+          <strong>24/365 安定稼働</strong>
+          <p class="muted">太陽光×蓄電で昼夜連続運転。均質化された生産システムにより各拠点の品質と計測を標準化。</p>
+        </div>
+        <div class="card reveal">
+          <strong>CO₂吸収効率</strong>
+          <p class="muted">自然由来比で約700倍（WP表現）。拠点数の増加が吸収総量の増大へ直結。</p>
+        </div>
+        <div class="card reveal">
+          <strong>7分野へ供給</strong>
+          <p class="muted">食品・医薬・工業・養殖・農業・バイオマス・エネルギーに原料/燃料を展開し、循環を強化。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Team" title="チーム" sub="研究×事業×ガバナンスで推進するコアメンバー" />
+      <div class="grid grid-3">
+        <div class="panel reveal">
+          <h3 style="margin:0 0 6px">Jag Kaurah</h3>
+          <div class="muted">ALGAE INTERNATIONAL（2007年〜）。藻類事業のパイオニアとして国際展開と実証を主導。</div>
+        </div>
+        <div class="panel reveal">
+          <h3 style="margin:0 0 6px">Errol Perera</h3>
+          <div class="muted">ASEAN領域の政策・産業連携に知見。スリランカ産業省アドバイザ等の経験を活かし、地域実装を加速。</div>
+        </div>
+        <div class="panel reveal">
+          <h3 style="margin:0 0 6px">松浦 亮介</h3>
+          <div class="muted">数理工学×プロダクト/データ。オンチェーン透明性やダッシュボードの実装を牽引。</div>
+        </div>
+        <div class="panel reveal">
+          <h3 style="margin:0 0 6px">熊木 景</h3>
+          <div class="muted">事業・マーケティング支援。分散的な参加設計とブランド構築を担当。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Partners" title="パートナー・提携" sub="政府・公的機関／大学・研究／財団と連携" />
+      <div class="grid grid-3">
+        <div class="card reveal"><strong>ASEAN</strong><div class="muted">東南アジア域での制度・実装連携</div></div>
+        <div class="card reveal"><strong>ANGKASA</strong><div class="muted">マレーシア政府機関連携</div></div>
+        <div class="card reveal"><strong>Invest Selangor</strong><div class="muted">投資庁との拠点整備連携</div></div>
+        <div class="card reveal"><strong>Negeri Pahang</strong><div class="muted">州政府と地域展開</div></div>
+        <div class="card reveal"><strong>University of Nottingham</strong><div class="muted">学内施設での共同実証</div></div>
+        <div class="card reveal"><strong>National University of Singapore</strong><div class="muted">研究・人材面の協働</div></div>
+        <div class="card reveal"><strong>YTAA</strong><div class="muted">財団連携による社会実装支援</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="token" class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Token / Participate" title="参加とトークン (MVT)" sub="ステーキング→CO₂吸収連動NFT→可視化と価値化の循環" />
+      <div class="grid grid-2">
+        <TokenDetails details={[
+          {label:'トークン', value: site.token.symbol},
+          {label:'総供給', value: site.token.totalSupply},
+          {label:'ネットワーク', value: site.token.network},
+          {label:'コントラクト', value: site.token.contract || 'TBA'}
+        ]} lockup={site.lockup} burn={site.burn} />
+        <div class="panel reveal">
+          <h3 style="margin:0 0 6px">参加の流れ</h3>
+          <ol style="margin:0; padding-left:1.2em">
+            {(site.ieo?.howTo||[]).map((s)=> (<li style="margin:6px 0">{s}</li>))}
+          </ol>
+          <div class="muted" style="margin-top:10px">ステーキングにより、CO₂吸収量に連動したNFTを受け取れます。オンチェーンで吸収量・資金の流れ・NFT発行履歴を透明化。</div>
+        </div>
+      </div>
+      <div class="panel reveal" style="margin-top:14px">
+        <strong>投資家ベネフィット</strong>
+        <ul class="muted" style="margin:8px 0 0 1.1em">
+          <li>オンチェーン検証可能な環境インパクト（CO₂吸収）の取得</li>
+          <li>NFTの二次市場取引による収益機会</li>
+          <li>拠点拡大に伴う循環強化と中長期の成長ポテンシャル</li>
+        </ul>
+      </div>
+      <div class="card reveal" style="margin-top:14px">
+        <h3 style="margin:0 0 8px">トークン配分</h3>
+        <TokenomicsChart data={site.tokenomics} />
+      </div>
     </div>
   </section>
 
